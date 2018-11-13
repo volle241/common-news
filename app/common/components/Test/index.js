@@ -6,7 +6,7 @@ export default class TestComponent extends React.Component {
   render() {
     return (
       <div className="test-component">
-        Test Component 22sd
+        Test Component
       </div>
     );
   }

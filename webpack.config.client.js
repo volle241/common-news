@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -8,7 +8,11 @@ module.exports = {
   devServer: {
     host: 'localhost',
     port: '6001',
-    hot: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-id, Content-Length, X-Requested-With'
+    }
   },
 
   entry: [
@@ -27,28 +31,32 @@ module.exports = {
       loaders: ['babel-loader'],
     }, {
       test: /\.(scss|css)$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [
-          'css-loader',
-          {
-            loader: `postcss-loader`,
-            options: {
-              config: { path: path.resolve(__dirname, './postcss.config.js') },
-            }
+      use: [
+        MiniCssExtractPlugin.loader,
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            minimize: false
           }
-        ],
-      })
+        },
+        {
+          loader: `postcss-loader`,
+          options: {
+            config: { path: path.resolve(__dirname, './postcss.config.js') },
+          }
+        }
+      ],
     }]
   },
 
   plugins: [
-    new ExtractTextPlugin({ filename: 'client.css' }),
-    new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin({ filename: 'client.css' }),
   ],
 
   output: {
     path: path.join(__dirname, '.build'),
+    publicPath: 'http://localhost:6001/',
     filename: 'client.js',
   },
 };

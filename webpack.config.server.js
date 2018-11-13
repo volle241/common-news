@@ -46,7 +46,6 @@ module.exports = {
       name: 'server.js',
       nodeArgs: ['--inspect'],
     }),
-    new webpack.HotModuleReplacementPlugin(),
   ],
 
   output: {

@@ -1,13 +1,11 @@
-const precss = require('precss');
-const postCssNested = require('postcss-nested');
-const postCssSimpleVars = require('postcss-simple-vars');
-const autoprefixer = require('autoprefixer');
+const path = require('path');
+
 
 module.exports = {
   plugins: [
-    precss,
-    postCssNested,
-    postCssSimpleVars,
-    autoprefixer,
+    require('precss'),
+    require('postcss-nested'),
+    require('postcss-simple-vars'),
+    require('autoprefixer'),
   ]
 };
