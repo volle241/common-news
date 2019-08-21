@@ -1,0 +1,28 @@
+.main-title-component {
+  font-weight: 400;
+  color: inherit !important;
+
+  &_type_h1 {
+    font-size: 32px;
+  }
+
+  &_type_h2 {
+    font-size: 24px;
+  }
+
+  &_type_h3 {
+    font-size: 20px;
+  }
+
+  &_type_h4 {
+    font-size: 16px;
+  }
+
+  &_type_h5 {
+    font-size: 14px;
+  }
+
+  &_type_h6 {
+    font-size: 11px;
+  }
+}

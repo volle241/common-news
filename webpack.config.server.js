@@ -46,6 +46,10 @@ module.exports = {
       name: 'server.js',
       nodeArgs: ['--inspect'],
     }),
+    new webpack.DefinePlugin({
+      window: JSON.stringify(undefined),
+    }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
 
   output: {

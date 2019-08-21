@@ -1,0 +1,118 @@
+.article-component {
+  $border-radius: 6px;
+  $width-of-six: calc((100% / 6) - 30px);
+  $width-of-five: calc(20% - 30px);
+  $width-of-four: calc(25% - 30px);
+  $width-of-three: calc((100% / 3) - 30px);
+
+  position: relative;
+  width: $width-of-four;
+  height: 400px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .1);
+  background-color: #fff;
+  border-radius: $border-radius;
+  margin: 0 15px 30px 15px;
+  padding-bottom: 24px;
+  overflow: hidden;
+
+  &__header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 60%;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    visibility: hidden;
+  }
+
+  &__image_loadend {
+    visibility: visible;
+  }
+
+  &__content {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    background-color: #fff;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    left: 0;
+    padding: 24px 20px;
+    transition: top 0.1s ease;
+  }
+
+  &__title {
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    padding-bottom: 12px;
+    line-height: 20px;
+  }
+
+  &__published {
+    position: relative;
+    opacity: 0.35;
+    padding-left: 14px;
+    font-size: 11px;
+    font-weight: bold;
+  }
+
+  &__published::before {
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    background-image: url('b64---/assets/images/ic_clock.svg---');
+    background-size: cover;
+    top: 1px;
+    left: 0;
+  }
+
+  &__paragraph {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.3px;
+    opacity: 0.7;
+  }
+
+  &__description {
+    opacity: 0.7;
+  }
+
+  &__link {
+    color: #A53860;
+    text-decoration: none;
+  }
+
+  &_initial {
+    opacity: 0.4;
+
+    .article-component__header,
+    .article-component__content {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .article-component__content {
+      top: 30%;
+    }
+  }
+
+  @media screen and (max-width: 1400px) {
+    width: $width-of-three;
+  }
+
+  @media screen and (min-width: 1600px) {
+    width: $width-of-five;
+  }
+
+  @media screen and (min-width: 1800px) {
+    width: $width-of-six;
+  }
+}
