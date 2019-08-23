@@ -44,7 +44,7 @@ module.exports = {
   plugins: [
     new StartServerPlugin({
       name: 'server.js',
-      nodeArgs: ['--inspect'],
+      nodeArgs: ['--inspect=9022'],
     }),
     new webpack.DefinePlugin({
       window: JSON.stringify(undefined),
